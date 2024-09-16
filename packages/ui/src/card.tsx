@@ -1,10 +1,11 @@
 import { type ReactNode } from 'react';
 
-export function Card({ title, children, href }: { title: string; children: ReactNode; href: string }): JSX.Element {
+export function Card({ title, children, href }: { title: string; children: ReactNode; href: string }) {
+  const href2 = `${href}?utm_source=create-turbo&utm_medium=with-tailwind&utm_campaign=create-turbo`;
   return (
     <a
       className="ui-group ui-rounded-lg ui-border ui-border-transparent ui-px-5 ui-py-4 ui-transition-colors hover:ui-border-neutral-700 hover:ui-bg-neutral-800/30"
-      href={`${href}?utm_source=create-turbo&utm_medium=with-tailwind&utm_campaign=create-turbo"`}
+      href={href2}
       rel="noopener noreferrer"
       target="_blank"
     >

@@ -8,7 +8,7 @@ import globals from 'globals';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  { ignores: ['node_modules/**', '**/*.stories.tsx', '**/postcss.config.js', 'next.config.js'] },
+  { ignores: ['node_modules/**', '**/*.stories.tsx', '**/postcss.config.js', 'next.config.js', 'global.d.ts'] },
   { files: ['**/*.{js,mjs,cjs,ts,tsx}'] },
   {
     languageOptions: {
