@@ -12,7 +12,7 @@ export default [
   { files: ['**/*.{js,mjs,cjs,ts,tsx}'] },
   {
     languageOptions: {
-      globals: globals.browser,
+      globals: { ...globals.browser, process: 'readonly' },
       parser: tsParser,
       parserOptions: {
         ecmaVersion: 'latest',

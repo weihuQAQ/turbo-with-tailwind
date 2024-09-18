@@ -1,0 +1,17 @@
+export const envObject = {
+  ALGOLIA_APIKEY: process.env.ALGOLIA_APIKEY,
+  ALGOLIA_APPID: process.env.ALGOLIA_APPID,
+  ALGOLIA_ARTICLE_INDEX: process.env.ALGOLIA_ARTICLE_INDEX,
+  ALGOLIA_ENV: process.env.ALGOLIA_ENV,
+  ALGOLIA_INDEX: process.env.ALGOLIA_INDEX,
+  ALGOLIA_KEYWORD_REDIRECT_INDEX: process.env.ALGOLIA_KEYWORD_REDIRECT_INDEX,
+  ALGOLIA_SUGGESTED_INDEX: process.env.ALGOLIA_SUGGESTED_INDEX,
+  BUILD_SITE: process.env.BUILD_SITE as 'US' | 'CA',
+  CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN as string,
+  CONTENTFUL_ENVIRONMENT: process.env.CONTENTFUL_ENVIRONMENT as string,
+  CONTENTFUL_HOST: process.env.CONTENTFUL_HOST as string,
+  CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID as string,
+  LOCALE: process.env.LOCALE as string,
+  PROXY_HOST: process.env.PROXY_HOST as string,
+  isDev: process.env.NODE_ENV === 'development'
+};
