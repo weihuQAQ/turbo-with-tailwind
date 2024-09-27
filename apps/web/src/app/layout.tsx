@@ -14,6 +14,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
+      <head>
+        <script src="/jquery.min.js"></script>
+      </head>
       <body>{children}</body>
     </html>
   );

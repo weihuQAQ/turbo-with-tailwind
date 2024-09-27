@@ -9,6 +9,7 @@ export const envObject = {
   BUILD_SITE: process.env.BUILD_SITE as 'US' | 'CA',
   CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN as string,
   CONTENTFUL_ENVIRONMENT: process.env.CONTENTFUL_ENVIRONMENT as string,
+  CONTENTFUL_GRAPHQL_HOST: process.env.CONTENTFUL_GRAPHQL_HOST as string,
   CONTENTFUL_HOST: process.env.CONTENTFUL_HOST as string,
   CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID as string,
   LOCALE: process.env.LOCALE as string,

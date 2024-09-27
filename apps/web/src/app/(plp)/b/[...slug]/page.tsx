@@ -1,5 +1,7 @@
-import { JsonViewer } from '../../../../components';
-import { syncContentful } from '../../../../utils';
+import { JsonViewer } from '@/components';
+import { PageAsset } from '@/components/contentful';
+import { PLPContextProvider } from '@/contexts/plp';
+import { fetchPage } from '@/utils';
 
 interface PageProps {
   params: {
@@ -8,19 +10,20 @@ interface PageProps {
 }
 
 export default async function Page(props: PageProps) {
-  const res = await syncContentful();
+  const page = await fetchPage(`/b/${props.params.slug.join('/')}`);
 
   return (
-    <div>
-      <div>/b/{props.params.slug.join('/')}</div>
-      <hr />
+    <PLPContextProvider value={{ page }}>
+      <main id="main-section">
+        <div>/b/{props.params.slug.join('/')}</div>
+        <hr />
 
-      <div>{res.items.length}</div>
-      <div>{res.nextSyncUrl}</div>
+        <hr />
+        <JsonViewer content={page} />
 
-      <hr />
-
-      <JsonViewer content={{ ...res, items: res.items.filter((_, index) => index < 20) }} />
-    </div>
+        {/* @ts-ignore */}
+        <PageAsset page={page} />
+      </main>
+    </PLPContextProvider>
   );
 }

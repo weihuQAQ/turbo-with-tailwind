@@ -13,7 +13,9 @@
   "devDependencies": {
     "@eslint/js": "^8",
     "@repo/typescript-config": "workspace:*",
+    "@types/blueimp-md5": "^2.18.2",
     "@types/eslint__js": "^8",
+    "@types/lodash": "^4.17.9",
     "@typescript-eslint/eslint-plugin": "^8.5.0",
     "@typescript-eslint/parser": "^8.5.0",
     "eslint": "^8",
@@ -23,11 +25,15 @@
     "globals": "^15.9.0",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.5.11",
-    "typescript": "^5.6.2",
-    "turbo": "^2.1.2"
+    "turbo": "^2.1.2",
+    "typescript": "^5.6.2"
   },
   "packageManager": "pnpm@8.15.6",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "blueimp-md5": "^2.19.0",
+    "lodash": "^4.17.21"
   }
 }
