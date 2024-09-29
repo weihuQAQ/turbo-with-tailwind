@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
+    "algoliasearch": "^5.6.1",
     "clsx": "^2.1.1",
     "next": "^14.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-instantsearch": "^7.13.2",
+    "react-instantsearch-nextjs": "^0.3.12",
     "react-json-view": "^1.21.3"
   },
   "devDependencies": {

@@ -6,10 +6,12 @@ import dynamic from 'next/dynamic';
 
 const ReactJson = dynamic(() => import('react-json-view'), { ssr: false });
 
-export function JsonViewer(props: { content: object; render?: boolean; collapsed?: boolean }) {
+export function JsonViewer(props: { content: object; render?: boolean; collapsed?: boolean; log?: boolean }) {
   useEffect(() => {
-    console.log(props.content);
-  }, [props.content]);
+    if (props.log) {
+      console.log(props.content);
+    }
+  }, [props.content, props.log]);
 
   if (props.render) {
     return <ReactJson src={props.content} collapsed={props.collapsed} />;

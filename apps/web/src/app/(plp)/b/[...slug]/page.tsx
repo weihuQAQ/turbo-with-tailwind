@@ -19,10 +19,9 @@ export default async function Page(props: PageProps) {
         <hr />
 
         <hr />
-        <JsonViewer content={page} />
+        <JsonViewer content={page} log />
 
-        {/* @ts-ignore */}
-        <PageAsset page={page} />
+        <PageAsset />
       </main>
     </PLPContextProvider>
   );

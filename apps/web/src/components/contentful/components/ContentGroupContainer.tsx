@@ -15,7 +15,7 @@ export function ContentGroupContainer(props: ContentGroup) {
 
   return (
     <div className={clsx('content-group-container', JSON.parse(configuration ?? '{}').className)}>
-      <ExampleComponent title={`${name}: ${componentType}`}>
+      <ExampleComponent title={`${name}: ${componentType}`} contentClass="tw-flex">
         <ContentfulComponent widgets={content as any} componentsMap={componentMap} />
       </ExampleComponent>
     </div>

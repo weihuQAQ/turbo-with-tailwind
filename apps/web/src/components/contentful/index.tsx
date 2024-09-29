@@ -2,16 +2,19 @@ import { PropsWithChildren } from 'react';
 
 import clsx from 'clsx';
 
-import { PageTreeAttributes } from '@/contexts/plp';
+import { PLPContext } from '@/contexts/plp';
+import { getServerContextValue } from '@/contexts/serverContext';
 import { PageTree } from '@/utils';
 
 import { componentMap } from './componentMap';
 
-export function ExampleComponent(props: PropsWithChildren<{ title: string; className?: string }>) {
+export function ExampleComponent(
+  props: PropsWithChildren<{ title: string; className?: string; contentClass?: string }>
+) {
   return (
     <fieldset className={clsx('tw-border tw-border-black tw-border-solid tw-p-2 tw-m-2', props.className)}>
       <legend className="tw-bg-black tw-text-white tw-px-2">{props.title}</legend>
-      <div>{props.children}</div>
+      <div className={props.contentClass}>{props.children}</div>
     </fieldset>
   );
 }
@@ -32,7 +35,6 @@ export function ContentfulComponent(props: { widgets: any[]; componentsMap: Reco
     }
 
     if (componentType === 'ContentGroupContainer') {
-      console.log(123, fields.name);
       return (
         <Component
           key={`${sys.id}-${index}`}
@@ -76,22 +78,15 @@ export function ContentfulComponent(props: { widgets: any[]; componentsMap: Reco
   });
 }
 
-export interface PageAssetProps {
-  page: PageTree<PageTreeAttributes>;
-}
+export function PageAsset() {
+  const { page } = getServerContextValue(PLPContext);
 
-export function PageAsset(props: PageAssetProps) {
   return (
     <div>
-      <ExampleComponent title={props.page.extractFields.name}>
-        <ExampleComponent title="Meta">
-          <h2>{props.page.extractFields.metaTitle}</h2>
-          <img src={props.page.extractFields.ogImage} alt="" className="tw-h-20" />
-        </ExampleComponent>
-
+      <ExampleComponent title={page.extractFields.name}>
         <ContentfulComponent
           // @ts-ignore
-          widgets={(props.page.extractFields.template as PageTree).extractFields.content}
+          widgets={(page.extractFields.template as PageTree).extractFields.content}
           componentsMap={componentMap}
         />
       </ExampleComponent>

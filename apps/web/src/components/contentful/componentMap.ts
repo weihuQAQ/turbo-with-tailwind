@@ -1,3 +1,5 @@
+import { NewPLPFilter } from '@/components/contentful/components/NewPLPFilter';
+
 import { AssetContentWidget } from './AssetContentWidget';
 import { ContentGroupContainer } from './components/ContentGroupContainer';
 import { StaticCSS } from './components/StaticCSS';
@@ -20,8 +22,9 @@ export const componentMap = {
   FooterMenu: FunctionalWidget,
   GlobalHeader: FunctionalWidget,
   MessageRibbonRPP: FunctionalWidget,
-  NewPLPFilter: FunctionalWidget,
+  NewPLPFilter,
   NewPLPHeader: FunctionalWidget,
+  NewPLPSearchHeader: FunctionalWidget,
   NewProductList: FunctionalWidget,
   RelatedProducts: FunctionalWidget,
   // StaticContentWidget
