@@ -13,9 +13,17 @@ export interface ContentGroup {
 export function ContentGroupContainer(props: ContentGroup) {
   const { configuration, content, name, componentType } = props;
 
+  const config = JSON.parse(configuration);
+
   return (
-    <div className={clsx('content-group-container', JSON.parse(configuration ?? '{}').className)}>
-      <ExampleComponent title={`${name}: ${componentType}`} contentClass="tw-flex">
+    <div className={clsx('content-group-container')}>
+      <ExampleComponent
+        title={`${name}: ${componentType}`}
+        contentClass={clsx(config.containerClass, {
+          'tw-flex': config.containerClass === 'new-plp'
+          // tw-flex-1
+        })}
+      >
         <ContentfulComponent widgets={content as any} componentsMap={componentMap} />
       </ExampleComponent>
     </div>

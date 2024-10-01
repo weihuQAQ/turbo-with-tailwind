@@ -41,6 +41,7 @@ export function ContentfulComponent(props: { widgets: any[]; componentsMap: Reco
           name={fields.name}
           componentType={componentType}
           content={fields.content}
+          configuration={fields.configuration}
         />
       );
     }

@@ -18,6 +18,9 @@ export interface FilterItem {
   }[];
 }
 
+// const useTransformItemsFactory = (refinements: { value: string }[]) => (items: { value: string }[]) =>
+//   items.filter((item) => refinements.some((refinement) => refinement.value === item.value));
+
 export function NewPLPFilter(props: FunctionalWidgetProps) {
   const filterConfig = JSON.parse(props.configuration) as FilterItem[];
 
@@ -30,7 +33,12 @@ export function NewPLPFilter(props: FunctionalWidgetProps) {
           return (
             <ExampleComponent key={`${displayName}: ${componentName}`} title={`${displayName}: ${componentName}`}>
               {filters.map((filter) => (
-                <RefinementList key={`${filter.displayName}: ${filter.name}`} attribute={filter.name} />
+                <RefinementList
+                  classNames={{ label: 'tw-space-x-2' }}
+                  key={`${filter.displayName}: ${filter.name}`}
+                  attribute={filter.name}
+                  limit={50}
+                />
               ))}
             </ExampleComponent>
           );
