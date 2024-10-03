@@ -1,9 +1,14 @@
 'use client';
 
-import { RefinementList } from 'react-instantsearch';
+import { Fragment } from 'react';
 
-import { ExampleComponent } from '@/components/contentful';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import { useRefinementList } from 'react-instantsearch';
+
 import { FunctionalWidgetProps } from '@/components/contentful/FunctionalWidget';
+import { Filters } from '@/components/plp';
 
 export interface FilterItem {
   displayName: string;
@@ -18,32 +23,50 @@ export interface FilterItem {
   }[];
 }
 
-// const useTransformItemsFactory = (refinements: { value: string }[]) => (items: { value: string }[]) =>
-//   items.filter((item) => refinements.some((refinement) => refinement.value === item.value));
+function RefinementItem(props: { attribute: string; limit?: number }) {
+  useRefinementList({ attribute: props.attribute, limit: props.limit ?? 50 });
+  return null;
+}
 
 export function NewPLPFilter(props: FunctionalWidgetProps) {
   const filterConfig = JSON.parse(props.configuration) as FilterItem[];
+  const headerHeight = '64px';
+  const mobileHeaderHeight = '56px';
 
   return (
-    <ExampleComponent title={`${props.name}: ${props.componentType}`}>
-      <div data-filters="" className="plp-filters">
+    <Box
+      sx={(theme) => ({
+        minWidth: '200px',
+        maxWidth: '280px',
+        top: mobileHeaderHeight,
+        maxHeight: `calc(100vh - ${mobileHeaderHeight})`,
+        [theme.breakpoints.up('md')]: {
+          top: headerHeight,
+          maxHeight: `calc(100vh - ${headerHeight})`
+        }
+      })}
+      position="sticky"
+      data-filters=""
+      className="plp-filters tw-peer"
+    >
+      <div className="tw-relative tw-max-h-full tw-flex tw-flex-col">
         {filterConfig.map((category) => {
-          const { filters, displayName, componentName } = category;
+          const { filters } = category;
 
           return (
-            <ExampleComponent key={`${displayName}: ${componentName}`} title={`${displayName}: ${componentName}`}>
-              {filters.map((filter) => (
-                <RefinementList
-                  classNames={{ label: 'tw-space-x-2' }}
-                  key={`${filter.displayName}: ${filter.name}`}
-                  attribute={filter.name}
-                  limit={50}
-                />
+            <Fragment key={category.displayName}>
+              {filters.map((filter, index) => (
+                <RefinementItem key={`${filter.name}-${index}`} attribute={filter.name} />
               ))}
-            </ExampleComponent>
+            </Fragment>
           );
         })}
+
+        <OverlayScrollbarsComponent defer options={{ scrollbars: { autoHide: 'move' } }}>
+          <Typography className="tw-p-4">Filters</Typography>
+          <Filters config={filterConfig} />
+        </OverlayScrollbarsComponent>
       </div>
-    </ExampleComponent>
+    </Box>
   );
 }

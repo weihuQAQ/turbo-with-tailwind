@@ -18,7 +18,10 @@ export function ContentGroupContainer(props: ContentGroup) {
   return (
     <div
       // has-[.plp-filters]:tw-flex not working properly
-      className={clsx('content-group-container tw-group has-[[data-filters]]:tw-flex tw-block', config.containerClass)}
+      className={clsx(
+        'content-group-container peer-[[data-filters]]:tw-flex-1 has-[[data-filters]]:tw-flex peer-[[data-filters]]:tw-p-4',
+        config.containerClass
+      )}
     >
       <ContentfulComponent widgets={content as any} componentsMap={componentMap} />
     </div>

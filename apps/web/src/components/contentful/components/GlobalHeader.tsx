@@ -161,7 +161,7 @@ export function GlobalHeader() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div" sx={{ display: { xs: 'none', sm: 'block' } }}>
-            MUI
+            LOGO
           </Typography>
           <Search>
             <SearchIconWrapper>
