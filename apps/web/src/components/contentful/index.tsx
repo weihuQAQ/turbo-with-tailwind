@@ -83,12 +83,10 @@ export function PageAsset() {
   const { page } = getServerContextValue(PLPContext);
 
   return (
-    <ExampleComponent title={page.extractFields.name}>
-      <ContentfulComponent
-        // @ts-ignore
-        widgets={(page.extractFields.template as PageTree).extractFields.content}
-        componentsMap={componentMap}
-      />
-    </ExampleComponent>
+    <ContentfulComponent
+      // @ts-ignore
+      widgets={(page.extractFields.template as PageTree).extractFields.content}
+      componentsMap={componentMap}
+    />
   );
 }

@@ -17,9 +17,9 @@ export default async function Page(props: PageProps) {
     <PLPContextProvider value={{ page }}>
       <GlobalProviders>
         <main id="main-section">
-          <JsonViewer content={page} log />
-
           <PageAsset />
+
+          <JsonViewer content={page} log />
         </main>
       </GlobalProviders>
     </PLPContextProvider>

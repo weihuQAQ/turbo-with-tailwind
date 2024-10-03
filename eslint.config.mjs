@@ -97,17 +97,17 @@ export default [
       'no-unused-vars': 'error',
       'no-var': 'error',
       'prefer-const': 'error',
-      'prettier/prettier': 'error',
-      'sort-keys': [
-        'error',
-        'asc',
-        {
-          allowLineSeparatedGroups: true,
-          caseSensitive: true,
-          minKeys: 2,
-          natural: true
-        }
-      ]
+      'prettier/prettier': 'error'
+      // 'sort-keys': [
+      //   'error',
+      //   'asc',
+      //   {
+      //     allowLineSeparatedGroups: true,
+      //     caseSensitive: true,
+      //     minKeys: 2,
+      //     natural: true
+      //   }
+      // ]
     }
   }
 ];

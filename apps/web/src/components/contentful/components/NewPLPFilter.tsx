@@ -26,7 +26,7 @@ export function NewPLPFilter(props: FunctionalWidgetProps) {
 
   return (
     <ExampleComponent title={`${props.name}: ${props.componentType}`}>
-      <div>
+      <div data-filters="" className="plp-filters">
         {filterConfig.map((category) => {
           const { filters, displayName, componentName } = category;
 

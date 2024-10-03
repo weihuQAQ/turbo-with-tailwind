@@ -3,26 +3,27 @@ import { Products } from '@/components/plp';
 
 import { AssetContentWidget } from './AssetContentWidget';
 import { ContentGroupContainer } from './components/ContentGroupContainer';
+import { GlobalHeader } from './components/GlobalHeader';
 import { StaticCSS } from './components/StaticCSS';
 import { StaticHTML } from './components/StaticHTML';
 import { StaticJS } from './components/StaticJS';
-import { StaticMessageRibbon } from './components/StaticMessageRibbon';
+// import { StaticMessageRibbon } from './components/StaticMessageRibbon';
 import { FunctionalWidget } from './FunctionalWidget';
 
 export const componentMap = {
   // FunctionalWidget
-  AffirmPayJS: FunctionalWidget,
+  // AffirmPayJS: FunctionalWidget,
   // AssetContentWidget
   AssetContent: AssetContentWidget,
   // FunctionalWidget
-  CRMOptIn: FunctionalWidget,
+  // CRMOptIn: FunctionalWidget,
   // ContentGroup
   ContentGroupContainer,
   // FunctionalWidget
   FireWorkLiveStream: FunctionalWidget,
   FooterMenu: FunctionalWidget,
-  GlobalHeader: FunctionalWidget,
-  MessageRibbonRPP: FunctionalWidget,
+  GlobalHeader: GlobalHeader,
+  // MessageRibbonRPP: FunctionalWidget,
   NewPLPFilter,
   NewPLPHeader: FunctionalWidget,
   NewPLPSearchHeader: FunctionalWidget,
@@ -31,8 +32,8 @@ export const componentMap = {
   // StaticContentWidget
   StaticCSS,
   StaticHTML,
-  StaticJS,
-  StaticMessageRibbon,
+  StaticJS
+  // StaticMessageRibbon,
   // FunctionalWidget
-  UsableNetToggler: FunctionalWidget
+  // UsableNetToggler: FunctionalWidget
 };
