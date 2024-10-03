@@ -13,7 +13,7 @@ export interface ContentGroup {
 export function ContentGroupContainer(props: ContentGroup) {
   const { configuration, content, name, componentType } = props;
 
-  const config = JSON.parse(configuration);
+  const config = JSON.parse(configuration ?? '{}');
 
   return (
     <div className={clsx('content-group-container')}>

@@ -28,9 +28,9 @@ export function ContentfulComponent(props: { widgets: any[]; componentsMap: Reco
     const { extractFields: fields, sys } = widget;
     const { componentType } = fields;
 
-    const Component = componentsMap[componentType] ?? ExampleComponent;
+    const Component = componentsMap[componentType];
     if (!Component) {
-      console.warn(`Component ${componentType} not found in ${Object.keys(componentsMap as Record<string, unknown>)}.`);
+      console.warn(`Component '${componentType}' not found.`);
       return null;
     }
 
@@ -83,14 +83,12 @@ export function PageAsset() {
   const { page } = getServerContextValue(PLPContext);
 
   return (
-    <div>
-      <ExampleComponent title={page.extractFields.name}>
-        <ContentfulComponent
-          // @ts-ignore
-          widgets={(page.extractFields.template as PageTree).extractFields.content}
-          componentsMap={componentMap}
-        />
-      </ExampleComponent>
-    </div>
+    <ExampleComponent title={page.extractFields.name}>
+      <ContentfulComponent
+        // @ts-ignore
+        widgets={(page.extractFields.template as PageTree).extractFields.content}
+        componentsMap={componentMap}
+      />
+    </ExampleComponent>
   );
 }

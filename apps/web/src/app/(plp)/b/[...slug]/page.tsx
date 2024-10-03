@@ -1,5 +1,6 @@
 import { JsonViewer } from '@/components';
 import { PageAsset } from '@/components/contentful';
+import { GlobalProviders } from '@/components/GlobalProviders';
 import { PLPContextProvider } from '@/contexts/plp';
 import { fetchPage } from '@/utils';
 
@@ -14,15 +15,13 @@ export default async function Page(props: PageProps) {
 
   return (
     <PLPContextProvider value={{ page }}>
-      <main id="main-section">
-        <div>/b/{props.params.slug.join('/')}</div>
-        <hr />
+      <GlobalProviders>
+        <main id="main-section">
+          <JsonViewer content={page} log />
 
-        <hr />
-        <JsonViewer content={page} log />
-
-        <PageAsset />
-      </main>
+          <PageAsset />
+        </main>
+      </GlobalProviders>
     </PLPContextProvider>
   );
 }
