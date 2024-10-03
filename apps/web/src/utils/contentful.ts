@@ -18,12 +18,10 @@ function normalizeSearchParameters(query: Record<string, unknown>) {
   return params.toString();
 }
 
-// eslint-disable-next-line no-undef
 async function request(url: string | URL | globalThis.Request, init: RequestInit = {}) {
   return await fetch(url, { ...(envObject.isDev ? { dispatcher } : {}), ...init }).then((res) => res.json());
 }
 
-// eslint-disable-next-line no-undef
 export async function syncContentful(init: RequestInit = {}) {
   const { CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_ENVIRONMENT, CONTENTFUL_SPACE_ID, CONTENTFUL_HOST } = envObject;
   const baseUrl = `https://${CONTENTFUL_HOST}/spaces/${CONTENTFUL_SPACE_ID}/environments/${CONTENTFUL_ENVIRONMENT}/sync`;
