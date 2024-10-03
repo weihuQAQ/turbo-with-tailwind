@@ -8,11 +8,20 @@ import globals from 'globals';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  { ignores: ['node_modules/**', '**/*.stories.tsx', '**/postcss.config.js', 'next.config.js', 'global.d.ts'] },
+  {
+    ignores: [
+      'node_modules/**',
+      '**/*.stories.tsx',
+      '**/postcss.config.js',
+      'next.config.js',
+      'global.d.ts',
+      'eslint.config.mjs'
+    ]
+  },
   { files: ['**/*.{js,mjs,cjs,ts,tsx}'] },
   {
     languageOptions: {
-      globals: { ...globals.browser, RequestInit: 'readonly', process: 'readonly' },
+      globals: { ...globals.browser, process: 'readonly', RequestInit: 'readonly' },
       parser: tsParser,
       parserOptions: {
         ecmaVersion: 'latest',
@@ -21,7 +30,6 @@ export default [
     },
     plugins: {
       ts,
-      // eslint-disable-next-line sort-keys
       '@typescript-eslint': ts,
       import: importPlugin,
       prettier: eslintPluginPrettier
@@ -52,11 +60,6 @@ export default [
               group: 'external',
               pattern: 'next/**',
               position: 'before'
-            },
-            {
-              group: 'external',
-              pattern: '@zenni/**',
-              position: 'after'
             },
             {
               group: 'internal',
