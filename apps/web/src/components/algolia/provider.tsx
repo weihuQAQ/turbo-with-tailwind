@@ -2,15 +2,16 @@
 
 import { PropsWithChildren } from 'react';
 
-import { InstantSearchNext } from 'react-instantsearch-nextjs';
+import { Configure, InstantSearch } from 'react-instantsearch';
 
 import { envObject } from '@/constants';
 import { algoliaClient } from '@/utils/algolia';
 
 export function AlgoliaProvider(props: PropsWithChildren) {
   return (
-    <InstantSearchNext searchClient={algoliaClient} indexName={`${envObject.ALGOLIA_ENV}_${envObject.ALGOLIA_INDEX}`}>
+    <InstantSearch searchClient={algoliaClient} indexName={`${envObject.ALGOLIA_ENV}_${envObject.ALGOLIA_INDEX}`}>
+      <Configure filters={'sites: US'} />
       {props.children}
-    </InstantSearchNext>
+    </InstantSearch>
   );
 }

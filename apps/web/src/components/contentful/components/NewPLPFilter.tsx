@@ -63,7 +63,7 @@ export function NewPLPFilter(props: FunctionalWidgetProps) {
         })}
 
         <OverlayScrollbarsComponent defer options={{ scrollbars: { autoHide: 'move' } }}>
-          <Typography className="tw-p-4">Filters</Typography>
+          <Typography className="tw-p-4 tw-border-r">Filters</Typography>
           <Filters config={filterConfig} />
         </OverlayScrollbarsComponent>
       </div>

@@ -1,3 +1,4 @@
+import { NewPLPHeader } from '@/components/business';
 import { NewPLPFilter } from '@/components/contentful/components/NewPLPFilter';
 import { Products } from '@/components/plp';
 
@@ -25,7 +26,7 @@ export const componentMap = {
   GlobalHeader: GlobalHeader,
   // MessageRibbonRPP: FunctionalWidget,
   NewPLPFilter,
-  NewPLPHeader: FunctionalWidget,
+  NewPLPHeader,
   NewPLPSearchHeader: FunctionalWidget,
   NewProductList: Products,
   RelatedProducts: FunctionalWidget,
