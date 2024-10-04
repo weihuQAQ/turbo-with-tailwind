@@ -7,3 +7,67 @@ body {
   min-height: 100vh;
   max-width: 100vw;
 }
+
+.color-black{
+  background-color: black;
+}
+.color-blue{
+  background-color: blue;
+}
+.color-tortoiseshell{
+  background-color: tortoiseshell;
+}
+.color-gray{
+  background-color: gray;
+}
+.color-brown{
+  background-color: brown;
+}
+.color-green{
+  background-color: green;
+}
+.color-purple{
+  background-color: purple;
+}
+.color-red{
+  background-color: red;
+}
+.color-pink{
+  background-color: pink;
+}
+.color-gold{
+  background-color: gold;
+}
+.color-clear{
+  background-color: clear;
+}
+.color-silver{
+  background-color: silver;
+}
+.color-pattern{
+  background-color: pattern;
+}
+.color-rose-gold{
+  background-color: rose-gold;
+}
+.color-white{
+  background-color: white;
+}
+.color-cream{
+  background-color: cream;
+}
+.color-multicolor{
+  background-color: multicolor;
+}
+.color-yellow{
+  background-color: yellow;
+}
+.color-orange{
+  background-color: orange;
+}
+.color-rainbow{
+  background-color: rainbow;
+}
+.color-wood-texture{
+  background-color: wood-texture;
+}

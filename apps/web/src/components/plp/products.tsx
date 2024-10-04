@@ -10,8 +10,10 @@ import { Hits, usePagination } from 'react-instantsearch';
 
 import { ProductTile } from '@/components/common';
 import { type FunctionalWidgetProps } from '@/components/contentful/FunctionalWidget';
+import { envObject } from '@/constants';
 
 const productNameFormatter = (name: string) => `${_.endsWith(name, ' Glasses') ? name.slice(0, -7) : name}`;
+const site = envObject.BUILD_SITE.toLowerCase();
 
 export function Products(props: FunctionalWidgetProps) {
   const config = JSON.parse(props.configuration ?? '{}');
@@ -60,14 +62,14 @@ export function Products(props: FunctionalWidgetProps) {
           <ProductTile
             key={hit.objectID}
             id={hit.prod_id}
-            img={hit.sku_image_url}
+            img={hit.sku_image_url ?? hit.prod_full_image}
             imgAlt={'image'}
             // TODO
-            focusImg={hit.sku_image_url.replace('-front', '-angle')}
+            focusImg={hit.sku_image_url?.replace('-front', '-angle') ?? hit.prod_full_image}
             focusImgAlt={'focus image'}
             name={productNameFormatter(hit.prod_name)}
             price={{
-              listPrice: hit.sku_price.us,
+              listPrice: hit.sku_price[site],
               salePrice: 0,
               isOnSale: false
             }}
@@ -77,7 +79,7 @@ export function Products(props: FunctionalWidgetProps) {
             }}
             url={hit.prod_url}
             productUrl={hit.prod_url}
-            skus={hit.all_variants.map((item: any) => ({ id: item.sku_id, colorClass: '' }))}
+            skus={hit.all_variants?.map((item: any) => ({ id: item.sku_id, colorClass: '' })) ?? []}
             skuLimit={3}
             isFavorite={false}
           />

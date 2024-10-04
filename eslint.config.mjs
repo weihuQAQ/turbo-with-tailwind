@@ -94,20 +94,11 @@ export default [
       'no-alert': 'error',
       'no-empty': 'error',
       'no-undef': 'error',
-      'no-unused-vars': 'error',
+      'no-unused-vars': 0,
+      '@typescript-eslint/no-unused-vars': ['error'],
       'no-var': 'error',
       'prefer-const': 'error',
       'prettier/prettier': 'error'
-      // 'sort-keys': [
-      //   'error',
-      //   'asc',
-      //   {
-      //     allowLineSeparatedGroups: true,
-      //     caseSensitive: true,
-      //     minKeys: 2,
-      //     natural: true
-      //   }
-      // ]
     }
   }
 ];

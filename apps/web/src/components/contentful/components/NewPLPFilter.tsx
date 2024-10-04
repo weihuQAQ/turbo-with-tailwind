@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -8,19 +8,27 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useRefinementList } from 'react-instantsearch';
 
 import { FunctionalWidgetProps } from '@/components/contentful/FunctionalWidget';
-import { Filters } from '@/components/plp';
+import { Filters } from '@/components/plp/filters';
+
+export interface Refinement {
+  label: string;
+  value: string;
+  imageUrl?: string;
+}
 
 export interface FilterItem {
   displayName: string;
+  name: string;
+  isDynamic: boolean;
+  isSort: boolean;
+  isInternal?: boolean;
+  refinements?: Refinement[];
+}
+
+export interface FilterCategoryItem {
+  displayName: string;
   componentName: string;
-  filters: {
-    displayName: string;
-    name: string;
-    isDynamic: boolean;
-    isSort: boolean;
-    isInternal?: boolean;
-    refinements?: { label: string; value: string; imageUrl?: string }[];
-  }[];
+  filters: FilterItem[];
 }
 
 function RefinementItem(props: { attribute: string; limit?: number }) {
@@ -29,9 +37,13 @@ function RefinementItem(props: { attribute: string; limit?: number }) {
 }
 
 export function NewPLPFilter(props: FunctionalWidgetProps) {
-  const filterConfig = JSON.parse(props.configuration) as FilterItem[];
+  const filterConfig = JSON.parse(props.configuration) as FilterCategoryItem[];
   const headerHeight = '64px';
   const mobileHeaderHeight = '56px';
+
+  useEffect(() => {
+    console.log(123, filterConfig);
+  }, []);
 
   return (
     <Box
@@ -62,7 +74,7 @@ export function NewPLPFilter(props: FunctionalWidgetProps) {
           );
         })}
 
-        <OverlayScrollbarsComponent defer options={{ scrollbars: { autoHide: 'move' } }}>
+        <OverlayScrollbarsComponent defer options={{ scrollbars: { autoHide: 'leave' } }}>
           <Typography className="tw-p-4 tw-border-r">Filters</Typography>
           <Filters config={filterConfig} />
         </OverlayScrollbarsComponent>

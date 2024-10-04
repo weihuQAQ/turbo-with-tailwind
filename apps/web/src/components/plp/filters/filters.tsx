@@ -8,7 +8,8 @@ import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/Accord
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
-import { FilterItem } from '@/components/contentful/components/NewPLPFilter';
+import { FilterCategoryItem } from '@/components/contentful/components/NewPLPFilter';
+import { FastFrame, StandardFilter } from '@/components/plp';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} children={props.children} />
@@ -36,26 +37,35 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: '1px solid rgba(0, 0, 0, .125)'
 }));
 
-export function Filters(props: { config: FilterItem[] }) {
+const filterMap = (componentType: string) => {
+  switch (componentType) {
+    case 'FastFrame':
+      return FastFrame;
+    case 'Color':
+    case 'Gender':
+    default:
+      return StandardFilter;
+  }
+};
+
+export function Filters(props: { config: FilterCategoryItem[] }) {
   return (
     <>
-      {props.config.map((category) => (
-        <Accordion key={category.displayName}>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls={category.displayName}
-            id={category.displayName}
-          >
-            <Typography sx={{ flexShrink: 0 }}>{category.displayName}</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat. Aliquam eget maximus est, id
-              dignissim quam.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-      ))}
+      {props.config.map((category) => {
+        const Component = filterMap(category.componentName);
+        return (
+          <Accordion key={category.displayName}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls={category.displayName}
+              id={category.displayName}
+            >
+              <Typography sx={{ flexShrink: 0 }}>{category.displayName}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>{Component && <Component {...category} />}</AccordionDetails>
+          </Accordion>
+        );
+      })}
     </>
   );
 }
